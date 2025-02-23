@@ -12,7 +12,7 @@ public class Main {
         {
             System.out.println("Reading "+inputFile);
             ExamRecord[] records = readInputFile(inputFile.toPath());
-            System.out.println("Ukázka: "+records[0].name);
+            System.out.println("Ukázka: "+records[0].getName());
         }
     }
 
