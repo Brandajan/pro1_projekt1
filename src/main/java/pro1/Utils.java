@@ -2,8 +2,14 @@ package pro1;
 
 public class Utils
 {
-    private static long gcd(long a, long b)
+    public static long gcd(long a, long b)
     {
-        return 1;
+        while(b != 0)
+        {
+            long temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
     }
 }
