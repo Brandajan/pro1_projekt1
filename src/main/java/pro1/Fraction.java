@@ -1,6 +1,8 @@
 package pro1;
 
-public class Fraction {
+import java.util.regex.Pattern;
+
+public class Fraction extends Number {
     private long n;
     private long d;
 
@@ -20,7 +22,7 @@ public class Fraction {
     public static Fraction parse(String s)
     {
         s = s.replace(" ","");
-        String[] split = s.split("\\+");
+        String[] split = s.split(Pattern.quote("+"));
         Fraction sum = new Fraction(0,1);
         for (String part : split)
         {
@@ -43,5 +45,25 @@ public class Fraction {
 
     public String toString() {
         return n + "/" + d;
+    }
+
+    @Override
+    public int intValue() {
+        return (int) (n /d);
+    }
+
+    @Override
+    public long longValue() {
+        return n / d;
+    }
+
+    @Override
+    public float floatValue() {
+        return (float)n / (float)d;
+    }
+
+    @Override
+    public double doubleValue() {
+        return (double)n / (double)d;
     }
 }
