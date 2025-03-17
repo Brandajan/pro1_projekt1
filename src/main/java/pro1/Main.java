@@ -43,19 +43,24 @@ public class Main {
         }
         return resultList.toArray(new ExamRecord[0]);
     }
-    public static void createCSV(ExamRecord[] records, String inputFileName){
+    public static void createCSV(ExamRecord[] records, String inputFileName){ //pole vstupních záznamů, název vstupního souboru
         File outputDir = new File("C:/data/output");
         if (!outputDir.exists()){  //pokud složka ještě neexistuje, vytvoří novou
             outputDir.mkdir();
         }
         String outputFileName = inputFileName + "_output.csv";
-        FileWriter writer =  new FileWriter(outputDir, outputFileName);
+
+        try {
+        FileWriter writer =  new FileWriter(outputFileName);
         writer.append("Jméno, Zlomek\n");
         for (ExamRecord record : records) { //projde celé records a zapíše do output souboru
             writer.append(record.getName());
             writer.append(", ");
             writer.append(record.getScore().toString());
-            writer.append("\n");  //nefunguje mi FileWriter :((((
+            writer.append("\n");
+        }} catch (IOException e) {
+            System.out.println("chyba");
         }
+
     }
 }
